@@ -27,6 +27,20 @@ public class Maze {
                 System.out.println("Exit Game");
                 break;
             }
+            if (input.equals("w")) {
+                player.moveUp();
+            }
+            if (input.equals("s")) {
+                player.moveDown();    
+            }
+            if (input.equals("a")) {
+                player.moveLeft();
+            }
+            if (input.equals("d")) {
+                player.moveRight();
+            }
+
+            
         }
     }
 
@@ -57,8 +71,10 @@ public class Maze {
                     }
                 }
 
-
-                if (x == startPoint.getX() && y == startPoint.getY()) {
+                if (x == player.getX() && y == player.getY()) {
+                    System.out.print('@');
+                }
+                else if (x == startPoint.getX() && y == startPoint.getY()) {
                     System.out.print('O');
                 }
                 else if (x == endPoint.getX() && y == endPoint.getY()) {
