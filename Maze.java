@@ -7,7 +7,7 @@ public class Maze {
 
     Point startPoint = new Point(7, 7);
     Point endPoint = new Point(68, 22);
-    Player player = new Player(startPoint.getX(), startPoint.getY());
+    Player player = new Player(startPoint);
 
     public Maze() throws Exception {
         roomList.add(new Room(new Point(5, 5), new Point(15, 15))); // first Room
