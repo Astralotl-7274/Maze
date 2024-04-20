@@ -1,7 +1,13 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Maze {
     ArrayList<Room> roomList = new ArrayList<Room>();
+    Scanner scnr = new Scanner(System.in);
+
+    Point startPoint = new Point(7, 7);
+    Point endPoint = new Point(68, 22);
+    Player player = new Player(startPoint.getX(), startPoint.getY());
 
     public Maze() throws Exception {
         roomList.add(new Room(new Point(5, 5), new Point(15, 15))); // first Room
@@ -11,7 +17,17 @@ public class Maze {
         roomList.add(new Corridor(new Point(15, 8), new Point(25, 10))); // first Corridor
         roomList.add(new Corridor(new Point(19, 14), new Point(25, 16))); // second Corridor
         roomList.add(new Corridor(new Point(18, 15), new Point(20, 20))); // second Corridor
+    }
 
+    public void runGame() {
+        while (true) {
+            print();
+            var input = scnr.next();
+            if (input.equals("e")) {
+                System.out.println("Exit Game");
+                break;
+            }
+        }
     }
 
     public void print() {
@@ -21,6 +37,7 @@ public class Maze {
             for (int x = 0; x < 80; x++) {
                 var isRoomWall = false;
                 var isOpening = false;
+
                 for (int i = 0; i < roomList.size(); i++) {
                     var room = roomList.get(i);
                     if (room.isWall(new Point(x, y))) {
@@ -41,11 +58,17 @@ public class Maze {
                 }
 
 
-                if (isRoomWall && !isOpening) {
-                    System.out.print("#");
-
+                if (x == startPoint.getX() && y == startPoint.getY()) {
+                    System.out.print('O');
+                }
+                else if (x == endPoint.getX() && y == endPoint.getY()) {
+                    System.out.print('X');
+                }
+                else if (isRoomWall && !isOpening) {
+                    System.out.print('#');
+                    
                 } else {
-                    System.out.print(".");
+                    System.out.print('.');
                 }
             }
         }

@@ -3,7 +3,7 @@ public class Program {
         try {
             Maze maze = new Maze();
 
-            maze.print();
+            maze.runGame();
         } catch (Exception e) {
             System.out.println("ERROR:" + e.getMessage());
         }
